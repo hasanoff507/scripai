@@ -1,0 +1,8 @@
+.container-fluid{
+    display: flex;
+    justify-content: space-between;
+}
+.scrip__title-scrip{
+    display: flex;
+    align-items: center;
+}
