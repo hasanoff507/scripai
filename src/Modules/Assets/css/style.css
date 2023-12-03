@@ -1,8 +1,26 @@
-.container-fluid{
-    display: flex;
-    justify-content: space-between;
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
 }
-.scrip__title-scrip{
+.scrip_header {
+  background: #e11d48;
+}
+.scrip__nav{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+.scrip__title-scrip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.scrip__title-scrip h1 {
+  font-size: 24px;
+  color: white;
+}
+.scrip__title_right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

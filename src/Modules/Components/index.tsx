@@ -3,25 +3,23 @@ import Nav from "./Nav";
 import LeftTab from "./LeftTab";
 import CenterTab from "./CenterTab";
 import RightTab from "./RightTab";
+import ContainerFull from "./Container";
 
+type Props = {};
 
-type Props = {
-
-};
-
-const Components: React.FC<Props> = ({ }: Props) => {
-
-   
-    return (
-       <div>
-        <Nav />
+const Components: React.FC<Props> = ({}: Props) => {
+  return (
+    <div>
+      <Nav />
+      <ContainerFull>
         <div className="container-fluid">
-            <LeftTab/>
-            <CenterTab/>
-            <RightTab/>
+          <LeftTab />
+          <CenterTab />
+          <RightTab />
         </div>
-       </div>
-    );
+      </ContainerFull>
+    </div>
+  );
 };
 
 export default Components;
