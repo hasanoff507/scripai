@@ -1,34 +1,60 @@
-import { Icon } from "@blueprintjs/core";
 import React, { useEffect, useState } from "react";
+import { Icon } from "@blueprintjs/core";
 
-type Props = {};
+type Post = {
+    id: number;
+    body: string; 
+};
 
-const CenterTab: React.FC<Props> = ({}: Props) => {
-    const [displayText, setDisplayText] = useState('');
+type Props = {
+    post: Post[];
+};
+
+const CenterTab: React.FC<Props> = ({ post }: Props) => {
+    const [animatedPosts, setAnimatedPosts] = useState<string[]>([]);
 
     useEffect(() => {
-        const text = "AI will write content here!"; 
+        if (post.length > 0) {
+            setAnimatedPosts(post.map(() => ''));
+            post.forEach((item, index) => {
+                let charIndex = 0;
+                const intervalId = window.setInterval(() => {
+                    if (charIndex < item.body.length) {
+                        setAnimatedPosts((currentPosts) => {
+                            const newPosts = [...currentPosts];
+                            newPosts[index] += item.body.charAt(charIndex);
+                            return newPosts;
+                        });
+                        charIndex++;
+                    } else {
+                        clearInterval(intervalId);
+                    }
+                }, 100);
+            });
+        } else {
+            // Handle the default text animation
+            const defaultText = "Ai will write content here!";
+            let index = 0;
+            const intervalId = window.setInterval(() => {
+                if (index < defaultText.length) {
+                    setAnimatedPosts([defaultText.substring(0, index + 1)]);
+                    index++;
+                } else {
+                    clearInterval(intervalId);
+                }
+            }, 100);
 
-        let index = 0;
-        const intervalId = setInterval(() => {
-            setDisplayText((prevText) => prevText + text[index]);
-            index++;
-
-            if (index === text.length) {
-                clearInterval(intervalId);
-            }
-        }, 100); 
-
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, []); 
+            return () => clearInterval(intervalId);
+        }
+    }, [post]); // Dependency on `post`
 
     return (
         <div className="center__tab">
             <div className="center__title">
                 <Icon iconSize={20} color="black" icon="clean" />
-                <p className="entry">{displayText}</p>
+                {animatedPosts.map((animatedPost, index) => (
+                    <p key={index} className="entry">{animatedPost}</p>
+                ))}
             </div>
         </div>
     );

@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
 import { Button, Form, Input, Select } from "antd";
 
-type Props = {};
+type Props = {
+  onFinish:any
+};
 type FieldType = {
   username?: string;
   password?: string;
@@ -12,11 +14,9 @@ const { TextArea } = Input;
 
 const { Option } = Select;
 
-const LeftTab: React.FC<Props> = ({}: Props) => {
+const LeftTab: React.FC<Props> = ({onFinish}: Props) => {
 
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
-  };
+  
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
@@ -72,7 +72,17 @@ const LeftTab: React.FC<Props> = ({}: Props) => {
             </div>
           </div>
           <Form.Item>
-            <Button style={{width:'100%',marginInlineStart:'unset', marginTop:'20px',background:'#e11d48', borderRadius:'20px'}} type="primary" htmlType="submit">
+            <Button
+              style={{
+                width: "100%",
+                marginInlineStart: "unset",
+                marginTop: "20px",
+                background: "#e11d48",
+                borderRadius: "20px",
+              }}
+              type="primary"
+              htmlType="submit"
+            >
               Submit
             </Button>
           </Form.Item>

@@ -78,15 +78,27 @@
   padding-right: 50px !important;
 }
 .center__tab {
-  width: 1050px;
+  max-width: 1050px;
+  width: 100%;
   height: 700px;
   padding: 20px;
   background-color: #fff;
   margin-top: 15px;
   border: 1px solid #edeef1;
-  overflow: auto;
+  overflow-y: auto; /* Allows vertical scrolling if content overflows */
+  overflow-x: hidden; /* Hides horizontal overflow */
   border-radius: 15px;
 }
+
+
+@media screen and (max-width: 1280px) {
+  .center__tab {
+    height: 500px; 
+  }
+}
+
+
+
 
 .center__title {
   display: flex;
@@ -100,18 +112,18 @@
   font-size: 18px;
   font-family: "Noto Sans JP", sans-serif;
   overflow: hidden; 
-  white-space: nowrap; 
-  border-right: 2px solid #000; 
+  /* border-right: 2px solid #000;  */
   padding-right: 8px; 
   animation: blink-caret 0.75s step-end infinite;
 }
+
 
 @keyframes blink-caret {
   from,
   to {
       border-color: transparent;
   }
-  50% {
+  60% {
       border-color: #000;
   }
 }
