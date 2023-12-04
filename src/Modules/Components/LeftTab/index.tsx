@@ -1,56 +1,83 @@
 import React, { useState, useRef } from "react";
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input, Select } from "antd";
 
 type Props = {};
 type FieldType = {
-    username?: string;
-    password?: string;
-    remember?: string;
-  };
+  username?: string;
+  password?: string;
+  remember?: string;
+};
+
+const { TextArea } = Input;
+
+const { Option } = Select;
+
 const LeftTab: React.FC<Props> = ({}: Props) => {
- 
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
-      };
-      
-      const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
-      };
+
+  const onFinish = (values: any) => {
+    console.log("Success:", values);
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log("Failed:", errorInfo);
+  };
 
   return (
-    <div>
-      <h2>AI Paragraph Writer</h2>
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item<FieldType>
-          name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
-          style={{maxWidth:'unset'}}
+    <div className="paragraph__list">
+      <div className="paragraph__title">
+        <h2>AI Paragraph Writer</h2>
+        <div className="paragraph__list__span"></div>
+      </div>
+      <div className="form__paragraph">
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          style={{ maxWidth: 600 }}
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
         >
-          <Input />
-        </Form.Item>
-
-        <Form.Item<FieldType>
-          name="password"
-          // rules={[{ required: true, message: "Please input your password!" }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+          <h5 className="topic">Topic</h5>
+          <Form.Item<FieldType>
+            name="username"
+            rules={[{ required: true, message: "Topic is required" }]}
+            style={{ maxWidth: "unset" }}
+          >
+            <TextArea placeholder="Please enter topic for paragraph..." />
+          </Form.Item>
+          <h5 className="keywords">
+            Keywords <span>(optional)</span>
+          </h5>
+          <Form.Item<FieldType> name="password">
+            <Input />
+          </Form.Item>
+          <div className="select__option">
+            <div className="language">
+              <p>Language</p>
+              <Select defaultValue="English">
+                <Option value="Spanish">Spanish</Option>
+                <Option value="German">German</Option>
+                <Option value="Russian">Russian</Option>
+              </Select>
+            </div>
+            <div className="tone">
+              <p>Tone</p>
+              <Select defaultValue="Professional">
+                <Option value="Informative">Informative</Option>
+                <Option value="Convincing">Convincing</Option>
+                <Option value="Enthusiastic">Enthusiastic</Option>
+              </Select>
+            </div>
+          </div>
+          <Form.Item>
+            <Button style={{width:'100%',marginInlineStart:'unset', marginTop:'20px',background:'#e11d48', borderRadius:'20px'}} type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };
