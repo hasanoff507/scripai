@@ -2284,13 +2284,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-typist@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@types/react-typist/-/react-typist-2.0.6.tgz#4a180ac3736a27089e73089e8f11a22c2b61b713"
-  integrity sha512-/7tmwNwKLOAdL1kx0y7yel4DqOvdQSk13MlCnBX8GyLoYicrU7t8rPOzu2soFTzq0c6QAeX6uSqTRX3tdya7rg==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react@*", "@types/react@^18.2.41":
   version "18.2.41"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.41.tgz#9eea044246bdb10510df89ef7f8422a8b6ad8fb9"
@@ -9740,7 +9733,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -10399,13 +10392,6 @@ react-transition-group@^4.4.5:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
-
-react-typist@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/react-typist/-/react-typist-2.0.5.tgz#9830395a73a03e6368e1392ecb98edaa3a648e44"
-  integrity sha512-iZCkeqeegO0TlkTMiH2JD1tvMtY9RrXkRylnAI6m8aCVAUUwNzoWTVF7CKLij6THeOMcUDCznLDDvNp55s+YZA==
-  dependencies:
-    prop-types "^15.5.10"
 
 react@^18.2.0:
   version "18.2.0"
