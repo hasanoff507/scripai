@@ -4,46 +4,46 @@ import { Button, Form, Input, Select } from "antd";
 type Post = {
   id: number;
   body: string;
-
 };
 
 type Props = {
-  setPost: React.Dispatch<React.SetStateAction<Post[]>>
+  setPost: React.Dispatch<React.SetStateAction<Post[]>>;
 };
 
 type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
+  url: string;
+  company_name: any;
+  about: string;
+  location: string;
+  audience: string;
 };
-
 const { TextArea } = Input;
 
 const { Option } = Select;
 
-const LeftTab: React.FC<Props> = ({setPost}: Props) => {
-
+const LeftTab: React.FC<Props> = ({ setPost }: Props) => {
   const onFinish = (values: any) => {
     console.log("Success:", values);
-    const title = values.username;
-  
+    const url = values.url;
+    const company_name = values.company_name;
+    const about = values.about;
+    const location = values.location;
+    const audience = values.audience;
+
     fetch(`http://localhost:8095/generate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(
-        {
-          url:"localhost:3000",
-          company_name:"DataMicron",
-          about:"some text for about",
-          location:"Tashkent",
-          audience:"programmer"
-          
-          }
-      )
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        url:url,
+        company_name:company_name,
+        about:about,
+        location:location,
+        audience:audience
+      }),
     })
-    .then(response => response.json())
-    .then(json => setPost(Array.isArray(json) ? json : [json]))
-    .catch(error => console.error("Error fetching data:", error));
+      .then((response) => response.json())
+      .then((json) => setPost(Array.isArray(json) ? json : [json]))
+      .catch((error) => console.error("Error fetching data:", error));
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -67,18 +67,42 @@ const LeftTab: React.FC<Props> = ({setPost}: Props) => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <h5 className="topic">Topic</h5>
+          <h5 className="keywords">Url</h5>
           <Form.Item<FieldType>
-            name="username"
+            name="url"
+            rules={[{ required: true, message: "Topic is required" }]}
+          >
+            <Input />
+          </Form.Item>
+          <h5 className="keywords">Company Name</h5>
+          <Form.Item<FieldType>
+            name="company_name"
+            rules={[{ required: true, message: "Topic is required" }]}
+          >
+            <Input />
+          </Form.Item>
+          <h5 className="topic">About</h5>
+          <Form.Item<FieldType>
+            name="about"
             rules={[{ required: true, message: "Topic is required" }]}
             style={{ maxWidth: "unset" }}
           >
             <TextArea placeholder="Please enter topic for paragraph..." />
+            <h5 className="keywords">Location</h5>
+            <Form.Item<FieldType>
+              name="location"
+              rules={[{ required: true, message: "Topic is required" }]}
+            >
+              <Input />
+            </Form.Item>
           </Form.Item>
           <h5 className="keywords">
             Keywords <span>(optional)</span>
           </h5>
-          <Form.Item<FieldType> name="password">
+          <Form.Item<FieldType>
+            name="audience"
+            rules={[{ required: true, message: "Topic is required" }]}
+          >
             <Input />
           </Form.Item>
           <div className="select__option">

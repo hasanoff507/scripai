@@ -43,6 +43,10 @@ const CenterTab: React.FC<Props> = ({ post }: Props) => {
     }
   }, [post]);
 
+  const refresh =()=>{
+    window.location.reload()
+  }
+
   return (
     <div>
       <div className="center__tab_input">
@@ -59,7 +63,7 @@ const CenterTab: React.FC<Props> = ({ post }: Props) => {
       </div>
       <div className="clear">
         <Button style={{boxShadow:'unset', backgroundColor:'#374051',color:'white',padding:'11px 19px', borderRadius:'20px'}}>Copy to Clipboard</Button>
-        <Button style={{boxShadow:'unset', backgroundColor:'#e11d48' ,padding:'11px 19px', borderRadius:'50%'}}><Icon iconSize={20} color="white" icon="refresh" /></Button>
+        <Button onClick={refresh} style={{boxShadow:'unset', backgroundColor:'#e11d48' ,padding:'11px 19px', borderRadius:'50%'}}><Icon iconSize={20} color="white" icon="refresh" /></Button>
       </div>
     </div>
   );
