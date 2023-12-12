@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Icon,Card, Elevation } from "@blueprintjs/core";
+import { Button, Icon } from "@blueprintjs/core";
 
 type Post = {
   id: number;

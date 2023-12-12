@@ -1,9 +1,16 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { Button, Form, Input, Select } from "antd";
 
-type Props = {
-  onFinish:any
+type Post = {
+  id: number;
+  body: string;
+
 };
+
+type Props = {
+  setPost: React.Dispatch<React.SetStateAction<Post[]>>
+};
+
 type FieldType = {
   username?: string;
   password?: string;
@@ -14,9 +21,30 @@ const { TextArea } = Input;
 
 const { Option } = Select;
 
-const LeftTab: React.FC<Props> = ({onFinish}: Props) => {
+const LeftTab: React.FC<Props> = ({setPost}: Props) => {
 
+  const onFinish = (values: any) => {
+    console.log("Success:", values);
+    const title = values.username;
   
+    fetch(`http://localhost:8095/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(
+        {
+          url:"localhost:3000",
+          company_name:"DataMicron",
+          about:"some text for about",
+          location:"Tashkent",
+          audience:"programmer"
+          
+          }
+      )
+    })
+    .then(response => response.json())
+    .then(json => setPost(Array.isArray(json) ? json : [json]))
+    .catch(error => console.error("Error fetching data:", error));
+  };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
