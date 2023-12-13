@@ -7,7 +7,7 @@ type Post = {
 };
 
 type Props = {
-  post: Post[];
+  post: any;
 };
 
 const CenterTab: React.FC<Props> = ({ post }: Props) => {
@@ -16,7 +16,7 @@ const CenterTab: React.FC<Props> = ({ post }: Props) => {
   useEffect(() => {
     if (post.length > 0) {
       setAnimatedPosts(post.map(() => ""));
-      post.forEach((item, index) => {
+      post.forEach((item:any, index:any) => {
         let charIndex = 0;
         const intervalId = window.setInterval(() => {
           if (charIndex < item.body.length) {

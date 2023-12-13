@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Input, Select } from "antd";
 
 type Post = {
@@ -7,12 +7,12 @@ type Post = {
 };
 
 type Props = {
-  setPost: React.Dispatch<React.SetStateAction<Post[]>>;
+  setPost: any;
 };
 
 type FieldType = {
   url: string;
-  company_name: any;
+  company_name: string;
   about: string;
   location: string;
   audience: string;
@@ -22,30 +22,40 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 const LeftTab: React.FC<Props> = ({ setPost }: Props) => {
-  const onFinish = (values: any) => {
+
+  const [simple, setSimple] = useState();
+
+const onFinish = (values:FieldType) => {
     console.log("Success:", values);
-    const url = values.url;
-    const company_name = values.company_name;
-    const about = values.about;
-    const location = values.location;
-    const audience = values.audience;
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            url: values.url,
+            company_name: values.company_name,
+            about: values.about,
+            location: values.location,
+            audience: values.audience
+        })
+    };
 
-    fetch(`http://localhost:8095/generate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        url:url,
-        company_name:company_name,
-        about:about,
-        location:location,
-        audience:audience
-      }),
-    })
-      .then((response) => response.json())
-      .then((json) => setPost(Array.isArray(json) ? json : [json]))
-      .catch((error) => console.error("Error fetching data:", error));
-  };
+    fetch('http://localhost:8095/generate', requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(json => {
+            setSimple(json);
+            console.log('Fetched data:', json);
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+};
 
+  
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
@@ -88,6 +98,7 @@ const LeftTab: React.FC<Props> = ({ setPost }: Props) => {
             style={{ maxWidth: "unset" }}
           >
             <TextArea placeholder="Please enter topic for paragraph..." />
+          </Form.Item>
             <h5 className="keywords">Location</h5>
             <Form.Item<FieldType>
               name="location"
@@ -95,7 +106,6 @@ const LeftTab: React.FC<Props> = ({ setPost }: Props) => {
             >
               <Input />
             </Form.Item>
-          </Form.Item>
           <h5 className="keywords">
             Keywords <span>(optional)</span>
           </h5>

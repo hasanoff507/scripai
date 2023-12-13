@@ -15,17 +15,6 @@ type Post = {
 const Components: React.FC<{}> = () => {
   const [post, setPost] = useState<Post[]>([]);
 
-  // const onFinish = (values: any) => {
-  //   console.log("Success:", values);
-  //   const id = values.username; 
-  //   fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-  //     .then((response) => response.json())
-  //     .then((json) => setPost(Array.isArray(json) ? json : [json])) 
-  //     .catch((error) => console.error("Error fetching data:", error));
-  // };
-
-
-
   return (
     <div>
       <Nav />

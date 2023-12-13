@@ -1,19 +1,20 @@
 import React from "react";
-import './Assets/css/style.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./Assets/css/style.css";
 import Components from "./Components";
+import Home from "./Home";
 
-type Props = {
-
-};
-
-const Modules: React.FC<Props> = ({ }: Props) => {
-
-   
-    return (
-       <div>
-        <Components/>
-       </div>
-    );
+const Modules: React.FC = () => {
+  return (
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/paragraph" element={<Components />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 };
 
 export default Modules;
