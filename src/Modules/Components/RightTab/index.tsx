@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Space } from "antd";
+import { Card } from "antd";
 import { Icon } from "@blueprintjs/core";
 
 type Props = {};
@@ -54,40 +54,72 @@ const RightTab: React.FC<Props> = ({}: Props) => {
             <h6>Social Media AI</h6>
             <span>(Live)</span>
             <ul>
-                <li><a href="#">Social Media Post</a></li>
-                <li><a href="#">Social Media Post Ideas</a></li>
-                <li><a href="#">Hashtag Generator</a></li>
-                <li><a href="#">Short Video Script</a></li>
+              <li>
+                <a href="#">Social Media Post</a>
+              </li>
+              <li>
+                <a href="#">Social Media Post Ideas</a>
+              </li>
+              <li>
+                <a href="#">Hashtag Generator</a>
+              </li>
+              <li>
+                <a href="#">Short Video Script</a>
+              </li>
             </ul>
           </div>
           <div className="socialmedia__ai">
             <h6>Social Media AI</h6>
             <span>(Live)</span>
             <ul>
-                <li><a href="#">Social Media Post</a></li>
-                <li><a href="#">Social Media Post Ideas</a></li>
-                <li><a href="#">Hashtag Generator</a></li>
-                <li><a href="#">Short Video Script</a></li>
+              <li>
+                <a href="#">Social Media Post</a>
+              </li>
+              <li>
+                <a href="#">Social Media Post Ideas</a>
+              </li>
+              <li>
+                <a href="#">Hashtag Generator</a>
+              </li>
+              <li>
+                <a href="#">Short Video Script</a>
+              </li>
             </ul>
           </div>
           <div className="socialmedia__ai">
             <h6>Social Media AI</h6>
             <span>(Live)</span>
             <ul>
-                <li><a href="#">Social Media Post</a></li>
-                <li><a href="#">Social Media Post Ideas</a></li>
-                <li><a href="#">Hashtag Generator</a></li>
-                <li><a href="#">Short Video Script</a></li>
+              <li>
+                <a href="#">Social Media Post</a>
+              </li>
+              <li>
+                <a href="#">Social Media Post Ideas</a>
+              </li>
+              <li>
+                <a href="#">Hashtag Generator</a>
+              </li>
+              <li>
+                <a href="#">Short Video Script</a>
+              </li>
             </ul>
           </div>
           <div className="socialmedia__ai">
             <h6>Social Media AI</h6>
             <span>(Live)</span>
             <ul>
-                <li><a href="#">Social Media Post</a></li>
-                <li><a href="#">Social Media Post Ideas</a></li>
-                <li><a href="#">Hashtag Generator</a></li>
-                <li><a href="#">Short Video Script</a></li>
+              <li>
+                <a href="#">Social Media Post</a>
+              </li>
+              <li>
+                <a href="#">Social Media Post Ideas</a>
+              </li>
+              <li>
+                <a href="#">Hashtag Generator</a>
+              </li>
+              <li>
+                <a href="#">Short Video Script</a>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,69 +1,107 @@
 import React, { useEffect, useState } from "react";
-import { Button, Icon } from "@blueprintjs/core";
+import { Button, Icon, Spinner, Toaster, Position, Intent } from "@blueprintjs/core";
+import TableComponent from "../TableComponent";
 
+// Define the structure of a post
 type Post = {
-  id: number;
-  body: string;
+  text: string;
 };
 
+// Define the structure of the table data
+type TableData = {
+  headers: string[];
+  rows: string[][];
+};
+
+// Props expected by CenterTab component
 type Props = {
-  post: any;
+  post: Post;
+  loading: boolean;
 };
 
-const CenterTab: React.FC<Props> = ({ post }: Props) => {
-  const [animatedPosts, setAnimatedPosts] = useState<string[]>([]);
+const CenterTab: React.FC<Props> = ({ post, loading }) => {
+  // State for storing table data
+  const [firstTableData, setFirstTableData] = useState<TableData>({
+    headers: [],
+    rows: [],
+  });
 
   useEffect(() => {
-    if (post.length > 0) {
-      setAnimatedPosts(post.map(() => ""));
-      post.forEach((item:any, index:any) => {
-        let charIndex = 0;
-        const intervalId = window.setInterval(() => {
-          if (charIndex < item.body.length) {
-            setAnimatedPosts([item.body.substring(0, charIndex + 1)])
-            charIndex++;
-          } else {
-            clearInterval(intervalId);
-          }
-        }, 100);
-      });
-    } else {
-      const defaultText = "Ai will write content here!";
-      let index = 0;
-      const intervalId = window.setInterval(() => {
-        if (index < defaultText.length) {
-          setAnimatedPosts([defaultText.substring(0, index + 1)]);
-          index++;
-        } else {
-          clearInterval(intervalId);
-        }
-      }, 100);
+    if (!loading && post.text) {
+      // Function to process the text into table data
+      const processData = (text: string): TableData => {
+        const lines = text.split("\n").filter((line) => line.trim());
+        const headers = lines[2].split("|").map((header) => header.trim());
+        const rows = lines
+          .slice(3)
+          .map((line) => line.split("|").map((cell) => cell.trim()));
+        return { headers, rows };
+      };
 
-      return () => clearInterval(intervalId);
+      // Split the text and process the first table
+      const [firstTableText, _] = post.text.split("Second Table:");
+      setFirstTableData(processData(firstTableText));
     }
-  }, [post]);
+  }, [post, loading]);
 
-  const refresh =()=>{
-    window.location.reload()
-  }
+  // Function to handle refresh action
+  const refresh = () => {
+    window.location.reload();
+  };
+
+  // Function to copy post text to clipboard
+  const copyToClipboard = () => {
+    if (post.text) {
+      navigator.clipboard.writeText(post.text)
+        .then(() => {
+          Toaster.create({ position: Position.TOP }).show({
+            message: "Text copied to clipboard!",
+            intent: Intent.SUCCESS,
+          });
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+        });
+    }
+  };
+
 
   return (
     <div>
       <div className="center__tab_input">
         <div className="center__tab">
           <div className="center__title">
-            <Icon iconSize={20} color="black" icon="clean" />
-            {animatedPosts.map((animatedPost, index) => (
-              <p key={index} className="entry">
-                {animatedPost}
-              </p>
-            ))}
+            {loading ? (
+              <Spinner size={50} />
+            ) : (
+              <TableComponent data={firstTableData} />
+            )}
           </div>
         </div>
       </div>
       <div className="clear">
-        <Button style={{boxShadow:'unset', backgroundColor:'#374051',color:'white',padding:'11px 19px', borderRadius:'20px'}}>Copy to Clipboard</Button>
-        <Button onClick={refresh} style={{boxShadow:'unset', backgroundColor:'#e11d48' ,padding:'11px 19px', borderRadius:'50%'}}><Icon iconSize={20} color="white" icon="refresh" /></Button>
+        <Button onClick={copyToClipboard}
+          style={{
+            boxShadow: "unset",
+            backgroundColor: "#374051",
+            color: "white",
+            padding: "11px 19px",
+            borderRadius: "20px",
+          }}
+        >
+          Copy to Clipboard
+        </Button>
+        <Button
+          onClick={refresh}
+          style={{
+            boxShadow: "unset",
+            backgroundColor: "#e11d48",
+            padding: "11px 19px",
+            borderRadius: "50%",
+          }}
+        >
+          <Icon iconSize={20} color="white" icon="refresh" />
+        </Button>
       </div>
     </div>
   );

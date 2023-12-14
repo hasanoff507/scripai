@@ -4,6 +4,8 @@ import { Icon, Card, Elevation } from "@blueprintjs/core";
 type Props = {};
 
 const Footer: React.FC<Props> = ({}: Props) => {
+  
+
   return (
     <div className="footer__section">
       <div

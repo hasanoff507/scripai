@@ -1,0 +1,38 @@
+{
+  "files": {
+    "static/js/0.8e3d092a.chunk.js": "/static/js/0.8e3d092a.chunk.js",
+    "static/js/0.8e3d092a.chunk.js.map": "/static/js/0.8e3d092a.chunk.js.map",
+    "static/js/1.dfcef5c8.chunk.js": "/static/js/1.dfcef5c8.chunk.js",
+    "static/js/1.dfcef5c8.chunk.js.map": "/static/js/1.dfcef5c8.chunk.js.map",
+    "blueprint-icons-all-paths.js": "/static/js/blueprint-icons-all-paths.b3320b04.chunk.js",
+    "blueprint-icons-all-paths.js.map": "/static/js/blueprint-icons-all-paths.b3320b04.chunk.js.map",
+    "blueprint-icons-all-paths-loader.js": "/static/js/blueprint-icons-all-paths-loader.df2e8e1e.chunk.js",
+    "blueprint-icons-all-paths-loader.js.map": "/static/js/blueprint-icons-all-paths-loader.df2e8e1e.chunk.js.map",
+    "blueprint-icons-split-paths-by-size-loader.js": "/static/js/blueprint-icons-split-paths-by-size-loader.6fbd9b54.chunk.js",
+    "blueprint-icons-split-paths-by-size-loader.js.map": "/static/js/blueprint-icons-split-paths-by-size-loader.6fbd9b54.chunk.js.map",
+    "main.css": "/static/css/main.61ee7b4d.chunk.css",
+    "main.js": "/static/js/main.045a826a.chunk.js",
+    "main.js.map": "/static/js/main.045a826a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0e2b44ae.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0e2b44ae.js.map",
+    "static/css/7.134dbf91.chunk.css": "/static/css/7.134dbf91.chunk.css",
+    "static/js/7.9ec19bcc.chunk.js": "/static/js/7.9ec19bcc.chunk.js",
+    "static/js/7.9ec19bcc.chunk.js.map": "/static/js/7.9ec19bcc.chunk.js.map",
+    "static/js/8.2fb8dc4b.chunk.js": "/static/js/8.2fb8dc4b.chunk.js",
+    "static/js/8.2fb8dc4b.chunk.js.map": "/static/js/8.2fb8dc4b.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.ce04817284262a036bd06778be1d3277.js": "/precache-manifest.ce04817284262a036bd06778be1d3277.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/7.134dbf91.chunk.css.map": "/static/css/7.134dbf91.chunk.css.map",
+    "static/css/main.61ee7b4d.chunk.css.map": "/static/css/main.61ee7b4d.chunk.css.map",
+    "static/js/7.9ec19bcc.chunk.js.LICENSE.txt": "/static/js/7.9ec19bcc.chunk.js.LICENSE.txt",
+    "static/media/googlrIcon.png": "/static/media/googlrIcon.b13c1140.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0e2b44ae.js",
+    "static/css/7.134dbf91.chunk.css",
+    "static/js/7.9ec19bcc.chunk.js",
+    "static/css/main.61ee7b4d.chunk.css",
+    "static/js/main.045a826a.chunk.js"
+  ]
+}

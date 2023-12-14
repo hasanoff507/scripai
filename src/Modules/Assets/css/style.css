@@ -102,7 +102,7 @@
 }
 
 .center__title {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 10px;
 }
@@ -248,4 +248,9 @@
 }
 .bp5-icon-arrow-right {
   color: white !important;
+}
+.table__component{
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
