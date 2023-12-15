@@ -67,8 +67,7 @@ const CenterTab: React.FC<Props> = ({ post, loading }) => {
 
 
   return (
-    <div>
-      <div className="center__tab_input">
+    <div style={{width:'100%'}}>
         <div className="center__tab">
           <div className="center__title">
             {loading ? (
@@ -78,7 +77,6 @@ const CenterTab: React.FC<Props> = ({ post, loading }) => {
             )}
           </div>
         </div>
-      </div>
       <div className="clear">
         <Button onClick={copyToClipboard}
           style={{

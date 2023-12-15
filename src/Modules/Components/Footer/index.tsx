@@ -8,7 +8,7 @@ const Footer: React.FC<Props> = ({}: Props) => {
 
   return (
     <div className="footer__section">
-      <div
+      <div className="footer__section-display"
         style={{
           display: "flex",
           alignItems: "center",
@@ -31,9 +31,9 @@ const Footer: React.FC<Props> = ({}: Props) => {
           </div>
           <p className="footer__text">Linkedln Post</p>
           <span className="footer__span">
-            Write LinkedIn post that make your LinkedIn <br /> conncetions stop
-            scrolling. Try AI LinkedIn <br /> Post generator by Scrip AI and
-            watch your <br /> LinkedIn post go viral!.
+            Write LinkedIn post that make your LinkedIn conncetions stop
+            scrolling. Try AI LinkedIn  Post generator by Scrip AI and
+            watch your  LinkedIn post go viral!.
           </span>
         </Card>
         <Card
@@ -50,7 +50,7 @@ const Footer: React.FC<Props> = ({}: Props) => {
           </div>
           <p className="footer__text">Linkedln Story Post</p>
           <span className="footer__span">
-            Write LinkedIn Story post that make your LinkedIn conncetions stop
+            Write LinkedIn Story post that make your LinkedIn conncetion stop
             scrolling. Try AI LinkedIn Story Post generator by Scrip AI and
             watch your LinkedIn post go viral!.
           </span>

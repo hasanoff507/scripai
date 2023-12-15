@@ -24,10 +24,12 @@ const Nav: React.FC<Props> = ({}) => {
               }}
             >
               {" "}
-              <div
+              <div 
+              className="font"
                 style={{ display: "flex", alignItems: "center", gap: "20px" }}
               >
                 <img
+                className="googleIcon"
                   style={{ width: "24px", height: "23px" }}
                   src={GoogleIcon}
                   alt=""

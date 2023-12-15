@@ -9,22 +9,22 @@ const TableComponent = ({ data }: any) => {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ["AI will write content here!"], // Add your strings here
-      startDelay: 300,
-      typeSpeed: 50,
-      backSpeed: 50,
-      backDelay: 1000,
-      smartBackspace: true,
-      loop: true,
-      showCursor: true,
-      cursorChar: '|',
+        strings: ["AI will write content here!"], // Add your strings here
+        startDelay: 300,
+        typeSpeed: 50,
+        backSpeed: 0, // Set backSpeed to 0
+        backDelay: 1000,
+        smartBackspace: true,
+        loop: false, // Set loop to false
+        showCursor: true,
+        cursorChar: '|',
     });
 
     // Destroy Typed instance on unmounting to prevent memory leaks
     return () => {
-      typed.destroy();
+        typed.destroy();
     };
-  }, []);
+}, []);
 
   // Check if data is valid before rendering
   if (!data || data.headers.length === 0 || data.rows.length === 0) {

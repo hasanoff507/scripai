@@ -1,5 +1,7 @@
 .container-fluid {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
   gap: 30px;
 }
 .scrip_header {
@@ -79,6 +81,7 @@
   padding-right: 50px !important;
 }
 .center__tab {
+  width: 1050px;
   max-width: 1050px;
   height: 700px;
   padding: 20px;
@@ -87,12 +90,6 @@
   border: 1px solid #edeef1;
   overflow: auto;
   border-radius: 15px;
-}
-
-.center__tab_input {
-  width: 1050px;
-  min-width: 100%;
-  max-width: 100%;
 }
 
 @media screen and (max-width: 1280px) {
@@ -134,8 +131,10 @@
 .right__tab {
   margin-top: 15px;
   height: 800px;
-  width: 500px;
+  width: 775px;
   overflow: auto;
+  max-width: 100%;
+  padding: 10px;
 }
 .right__tab_card {
   width: 40px;
@@ -249,8 +248,64 @@
 .bp5-icon-arrow-right {
   color: white !important;
 }
-.table__component{
+.table__component {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+@media screen and (max-width: 1880px) {
+  .center__tab {
+    width: unset; /* Full width of the container */
+    max-width: unset !important; /* Max width limited to 1050px */
+    height: 700px;
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 15px;
+    border: 1px solid #edeef1;
+    overflow: auto;
+    border-radius: 15px;
+  }
+}
+@media screen and (max-width: 769px) {
+  .container-fluid {
+    flex-direction: column;
+  }
+  .paragraph__list {
+    width: 100%;
+  }
+  .ant-form {
+    max-width: 100% !important;
+  }
+  .ant-card {
+    width: 100% !important;
+  }
+  .footer__section-display {
+    flex-direction: column;
+  }
+  .bp5-card {
+    width: 100% !important;
+  }
+  .scrip__title-scrip h1 {
+    font-size: 21px !important;
+  }
+  .font {
+    font-size: 8px;
+  }
+  .googleIcon {
+    width: 15px;
+    height: 15px;
+  }
+  .scrip__title_right h3 {
+    font-size: 13px;
+  }
+  .scrip__title_right {
+    gap: 10px;
+  }
+  .homepage h1{
+    font-size: 36px !important;
+   }
+   .homepage span {
+font-size: 45px !important;
+  }
 }

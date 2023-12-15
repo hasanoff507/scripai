@@ -20,6 +20,7 @@ const RightTab: React.FC<Props> = ({}: Props) => {
             width: "400px",
             background: "#f0fdf3",
             border: "1px solid #4ade80",
+            maxWidth:'100%'
           }}
         >
           <p>Money Saved</p>
@@ -37,6 +38,8 @@ const RightTab: React.FC<Props> = ({}: Props) => {
             width: "400px",
             background: "#fafaf9",
             border: "1px solid #d6d3d1",
+            maxWidth:'100%'
+
           }}
         >
           <p>Number of Token:</p>
