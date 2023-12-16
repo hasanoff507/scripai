@@ -81,8 +81,8 @@
   padding-right: 50px !important;
 }
 .center__tab {
-  width: 1050px;
-  max-width: 1050px;
+  width: 100%;
+  /* max-width: 1050px; */
   height: 700px;
   padding: 20px;
   background-color: #fff;
