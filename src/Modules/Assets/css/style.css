@@ -253,6 +253,35 @@
   align-items: center;
   gap: 10px;
 }
+.table__component {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.table__component table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table__component th, .table__component td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table__component th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.table__component tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table__component tr:hover {
+  background-color: #f1f1f1;
+}
+
 
 @media screen and (max-width: 1880px) {
   .center__tab {
