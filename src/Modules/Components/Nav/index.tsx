@@ -12,7 +12,7 @@ const Nav: React.FC<Props> = ({}) => {
         <nav className="scrip__nav">
           <div className="scrip__title-scrip">
             <Icon iconSize={29} color="white" icon="clean" />
-            <h1>Scrip</h1>
+            <h1>Text Ai</h1>
           </div>
           <div className="scrip__title_right">
             <h3>All Tools</h3>
