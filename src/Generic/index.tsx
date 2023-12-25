@@ -1,29 +1,36 @@
-import React from "react";
-import { SocialMedia } from "../Api";
-import '../Modules/Assets/css/style.css'
+import React, { useEffect, useState } from "react";
+import { Link, BrowserRouter as Router } from "react-router-dom";
+import '../Modules/Assets/css/style.css';
 
-type Props = {
+const Generic = () => {
+    const [categories, setCategories] = useState([
+        // ... your categories data
+    ]);
 
-};
+    useEffect(() => {
+        fetch('http://localhost:8095/categories')
+            .then(response => response.json())
+            .then(json => setCategories(json));
+    }, []);
+// console.log(getData);
 
-const Generic: React.FC<Props> = ({ }: Props) => {
-
-    console.log(SocialMedia)
-   
     return (
-        <div >
-        {SocialMedia.map((item) => {
-            return (
-                <div  key={item.id}>
-                    <h4>{item.category}</h4>
-                    <p>{item.socialMediaPost}</p>
-                    <p>{item.socialMediaPostIdeas}</p>
-                    <p>{item.hashtagGenerator}</p>
-                    <p>{item.shortVideoScript}</p>
-                </div>
-            );
-        })}
-    </div>
+        <Router>
+        {categories.map((category:any, index:number) => (
+            <div key={index}>
+                <h3>{category.categoryName}</h3>
+                <ul>
+                    {category.templates.map((template:any, idx:number) => (
+                        <li key={idx}>
+                            <Link to={template.templateTitle}>
+                                {template.templateName}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        ))}
+    </Router>
     );
 };
 
