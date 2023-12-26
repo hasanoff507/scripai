@@ -12,7 +12,7 @@ const Generic = () => {
             .then(response => response.json())
             .then(json => setCategories(json));
     }, []);
-// console.log(getData);
+console.log(categories);
 
     return (
         <Router>

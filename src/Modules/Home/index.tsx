@@ -48,7 +48,7 @@ const Home: React.FC<Props> = ({}: Props) => {
             <span>Paragraph</span>
             <p>10X faster & free AI content tool!</p>
           </div>
-          <Link to="/paragraph">
+          <Link to="/ai-tools">
             <Button
               icon="arrow-right"
               style={{

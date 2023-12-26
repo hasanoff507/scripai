@@ -4,8 +4,7 @@ import Generic from './Generic';
 function App() {
   return (
     <div>
-      {/* <Modules/> */}
-      <Generic/>
+      <Modules/>
     </div>
   );
 }

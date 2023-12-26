@@ -26,6 +26,9 @@ const CenterTab: React.FC<Props> = ({ post, loading }) => {
     rows: [],
   });
 
+
+
+
   useEffect(() => {
     if (!loading && post.text) {
       // Function to process the text into table data
