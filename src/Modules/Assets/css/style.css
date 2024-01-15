@@ -36,7 +36,12 @@
   max-width: unset;
 }
 .paragraph__list {
-  width: 400px;
+  width: 500px;
+}
+.savedata__title{
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 18px;
+  color: #000;
 }
 .paragraph__list__span {
   border: 1px solid #edecec;
@@ -44,9 +49,10 @@
 }
 .paragraph__title {
   margin-bottom: 35px;
+  margin-top: 20px;
 }
 .paragraph__title h2 {
-  font-size: 28px;
+  font-size: 19px;
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 600;
   margin-block-start: unset;

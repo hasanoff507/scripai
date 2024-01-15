@@ -35,20 +35,30 @@ const Modules: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const storedTemplates = localStorage.getItem('templateData');
+    if (storedTemplates) {
+      setTemplates(JSON.parse(storedTemplates));
+    }
+    setLoading(false);
+  }, []);
+
+  // Fetch templates data and save it to localStorage
+  useEffect(() => {
     if (categoryTitle && templateTitle) { // Ensure both values are set
       fetch(`http://localhost:8095/templates/${categoryTitle}/${templateTitle}`)
         .then(response => response.json())
         .then(json => {
           setTemplates(json);
-
+          localStorage.setItem('templateData', JSON.stringify(json)); // Save to local storage
         })
         .catch(error => {
           console.error('Error fetching template data:', error);
-          setLoading(false)
+          setLoading(false);
         });
     }
-  }, [categoryTitle, templateTitle]); 
+  }, [categoryTitle, templateTitle]);
 
+// console.log(templates);
 
   return (
     <Router>
