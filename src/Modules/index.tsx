@@ -21,9 +21,8 @@ const Modules: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true); // Initialize loading state
   const [templates, setTemplates] = useState();
-  const [templateTitle, setTemplateTitle] = useState()
-  const [categoryTitle , setCategoryTitle]=  useState()
-
+  const [templateTitle, setTemplateTitle] = useState();
+  const [categoryTitle, setCategoryTitle] = useState();
 
   useEffect(() => {
     fetch("http://localhost:8095/categories")
@@ -35,7 +34,7 @@ const Modules: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const storedTemplates = localStorage.getItem('templateData');
+    const storedTemplates = localStorage.getItem("templateData");
     if (storedTemplates) {
       setTemplates(JSON.parse(storedTemplates));
     }
@@ -44,21 +43,22 @@ const Modules: React.FC = () => {
 
   // Fetch templates data and save it to localStorage
   useEffect(() => {
-    if (categoryTitle && templateTitle) { // Ensure both values are set
+    if (categoryTitle && templateTitle) {
+      // Ensure both values are set
       fetch(`http://localhost:8095/templates/${categoryTitle}/${templateTitle}`)
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
           setTemplates(json);
-          localStorage.setItem('templateData', JSON.stringify(json)); // Save to local storage
+          localStorage.setItem("templateData", JSON.stringify(json)); // Save to local storage
         })
-        .catch(error => {
-          console.error('Error fetching template data:', error);
+        .catch((error) => {
+          console.error("Error fetching template data:", error);
           setLoading(false);
         });
     }
   }, [categoryTitle, templateTitle]);
 
-// console.log(templates);
+  // console.log(templates);
 
   return (
     <Router>
@@ -68,14 +68,26 @@ const Modules: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route
               path="ai-tools"
-              element={<AiTools categories={categories}  setTemplateTitle={setTemplateTitle} setCategoryTitle={setCategoryTitle} />}
+              element={
+                <AiTools
+                  categories={categories}
+                  setTemplateTitle={setTemplateTitle}
+                  setCategoryTitle={setCategoryTitle}
+                />
+              }
             />
             <Route path={`${item.categoryTitle}`}>
               {item.templates.map((template: any, idx: number) => (
                 <Route key={idx}>
                   <Route
                     path={`${template.templateTitle}`}
-                    element={<Components templates={templates}/>}
+                    element={
+                      <Components
+                        templates={templates}
+                        templateTitle={templateTitle}
+                        categoryTitle={categoryTitle}
+                      />
+                    }
                   />
                 </Route>
               ))}

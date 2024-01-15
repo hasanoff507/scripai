@@ -1,51 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Button, Icon, Spinner, Toaster, Position, Intent } from "@blueprintjs/core";
+import {
+  Button,
+  Icon,
+  Spinner,
+  Toaster,
+  Position,
+  Intent,
+} from "@blueprintjs/core";
 import TableComponent from "../TableComponent";
 
-// Define the structure of a post
-type Post = {
-  text: string;
-};
-
-// Define the structure of the table data
-type TableData = {
-  headers: string[];
-  rows: string[][];
-};
 
 // Props expected by CenterTab component
 type Props = {
-  post: Post;
   loading: boolean;
+  valuesPost: any;
 };
 
-const CenterTab: React.FC<Props> = ({ post, loading }) => {
-  // State for storing table data
-  const [firstTableData, setFirstTableData] = useState<TableData>({
-    headers: [],
-    rows: [],
-  });
+const CenterTab: React.FC<Props> = ({ loading, valuesPost }) => {
 
-
-
-
-  useEffect(() => {
-    if (!loading && post.text) {
-      // Function to process the text into table data
-      const processData = (text: string): TableData => {
-        const lines = text.split("\n").filter((line) => line.trim());
-        const headers = lines[2].split("|").map((header) => header.trim());
-        const rows = lines
-          .slice(3)
-          .map((line) => line.split("|").map((cell) => cell.trim()));
-        return { headers, rows };
-      };
-
-      // Split the text and process the first table
-      const [firstTableText, _] = post.text.split("Second Table:");
-      setFirstTableData(processData(firstTableText));
-    }
-  }, [post, loading]);
 
   // Function to handle refresh action
   const refresh = () => {
@@ -54,34 +26,37 @@ const CenterTab: React.FC<Props> = ({ post, loading }) => {
 
   // Function to copy post text to clipboard
   const copyToClipboard = () => {
-    if (post.text) {
-      navigator.clipboard.writeText(post.text)
+    if (valuesPost && valuesPost.text) {
+      navigator.clipboard
+        .writeText(valuesPost.text)
         .then(() => {
           Toaster.create({ position: Position.TOP }).show({
             message: "Text copied to clipboard!",
             intent: Intent.SUCCESS,
           });
         })
-        .catch(err => {
-          console.error('Failed to copy: ', err);
+        .catch((err) => {
+          console.error("Failed to copy: ", err);
         });
+    } else {
+      console.error("No text to copy");
     }
   };
 
-
   return (
-    <div style={{width:'100%'}}>
-        <div className="center__tab">
-          <div className="center__title">
-            {loading ? (
-              <Spinner size={50} />
-            ) : (
-              <TableComponent data={firstTableData} />
-            )}
-          </div>
+    <div style={{ width: "100%" }}>
+      <div className="center__tab">
+        <div className="center__title">
+          {loading ? (
+            <Spinner size={50} />
+          ) : (
+            <TableComponent valuesPost={valuesPost}  />
+          )}
         </div>
+      </div>
       <div className="clear">
-        <Button onClick={copyToClipboard}
+        <Button
+          onClick={copyToClipboard}
           style={{
             boxShadow: "unset",
             backgroundColor: "#374051",

@@ -21,45 +21,96 @@ type TemplatesType = {
   fields: string[];
 };
 
-type Post = {
-  text: string;
-};
 
 type Props = {
   templates: any;
+  templateTitle: any;
+  categoryTitle: any;
 };
 
-const Components: React.FC<Props> = ({ templates }: Props) => {
-  const [post, setPost] = useState<Post>({ text: "" });
+const Components: React.FC<Props> = ({
+  templates,
+  templateTitle,
+  categoryTitle,
+}: Props) => {
+  //State for POST and GET
+
   const [loading, setLoading] = useState(false);
+  const [valuesPost, setValuesPost] = useState();
+
+  //  LocalStorage from Titles
+  useEffect(() => {
+    if (templateTitle && categoryTitle) {
+      localStorage.setItem("templateTitle", templateTitle);
+      localStorage.setItem("categoryTitle", categoryTitle);
+    }
+  }, [templateTitle, categoryTitle]);
+
+  //LcocalStorage from Values
 
   const getInitialSaveData = () => {
     const saved = localStorage.getItem("saveData");
     if (saved) {
       try {
         const savedData = JSON.parse(saved);
-        // Check if the `templates` prop is different from the saved data
-        if (JSON.stringify(templates) !== JSON.stringify(savedData)) {
-          return templates; // if different, use the new templates
-        }
-        return savedData; // if not, use the saved data
+        return savedData;
       } catch (e) {
         console.error("Parsing error:", e);
-        return templates; // in case of error, default to templates
+        return templates;
       }
     }
-    return templates; // if nothing is saved, use the templates
+    return templates;
   };
 
   const [saveData, setSaveData] = useState<TemplatesType>(getInitialSaveData);
+
+  //LocalStorage SaveData
 
   useEffect(() => {
     localStorage.setItem("saveData", JSON.stringify(saveData));
   }, [saveData]);
 
+  // Render LcoalStorage
+
+  useEffect(() => {
+    setSaveData(templates);
+  }, [templates]);
+
+  //Post Request
+
   const onFinish = (values: FieldType) => {
-    console.log(values, "success");
+    const localCategoryTitle = localStorage.getItem("categoryTitle");
+    const localTemplateTitle = localStorage.getItem("templateTitle");
+  
+    if (!localCategoryTitle || !localTemplateTitle) {
+      console.error("Category title or template title is missing");
+      return; // Exit the function if titles are missing
+    }
+  
+    setLoading(true); // Set loading to true when the request starts
+  
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    };
+  
+    fetch(
+      `http://localhost:8095/generate/${localCategoryTitle}/${localTemplateTitle}`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setValuesPost(data);
+        setLoading(false); // Set loading to false when the request is complete
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+        setLoading(false); // Set loading to false also in case of error
+      });
   };
+
+  //Feiled Post Request
 
   const onFinishFailed = (errorInfo: any) => {
     console.log(errorInfo, "error");
@@ -108,7 +159,7 @@ const Components: React.FC<Props> = ({ templates }: Props) => {
               </Form>
             </div>
           </div>
-          <CenterTab post={post} loading={loading} />
+          <CenterTab valuesPost={valuesPost} loading={loading} />
           <RightTab />
         </div>
       </ContainerFull>
