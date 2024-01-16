@@ -18,7 +18,7 @@ const Nav: React.FC<Props> = ({}) => {
               </a>
           </div>
           <div className="scrip__title_right">
-            <h3>All Tools</h3>
+            <a style={{color:'#fff'}} href="/ai-tools">All Tools</a>
             <Button
               style={{
                 borderRadius: "20px",

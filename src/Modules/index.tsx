@@ -83,6 +83,9 @@ const Modules: React.FC = () => {
                     path={`${template.templateTitle}`}
                     element={
                       <Components
+                        categories={categories}
+                        setTemplateTitle={setTemplateTitle}
+                        setCategoryTitle={setCategoryTitle}
                         templates={templates}
                         templateTitle={templateTitle}
                         categoryTitle={categoryTitle}

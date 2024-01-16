@@ -137,7 +137,7 @@
 .right__tab {
   margin-top: 15px;
   height: 800px;
-  width: 775px;
+  width: 450px;
   overflow: auto;
   max-width: 100%;
   padding: 10px;
@@ -165,6 +165,7 @@
   font-family: "Noto Sans JP", sans-serif;
   font-size: 18px;
   margin-block-end: unset;
+  margin-block-start: unset;
   font-weight: 700;
 }
 .list__tools_text span {
@@ -288,6 +289,10 @@
   background-color: #f1f1f1;
 }
 
+.aitools__display{
+  display: flex;
+  gap: 30px;
+}
 
 @media screen and (max-width: 1880px) {
   .center__tab {
@@ -300,6 +305,11 @@
     border: 1px solid #edeef1;
     overflow: auto;
     border-radius: 15px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .center__tab {
+    height: 500px;
   }
 }
 @media screen and (max-width: 769px) {
