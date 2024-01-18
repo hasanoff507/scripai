@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 type Template = {
   templateTitle: string;
@@ -22,38 +22,35 @@ const RightTab: React.FC<Props> = ({
   setTemplateTitle,
   setCategoryTitle,
 }: Props) => {
-
   const handleSubmitLink = (categoryTitle: any, templateTitle: any) => {
     setCategoryTitle(categoryTitle);
     setTemplateTitle(templateTitle);
-
+    window.location.reload();
   };
 
   return (
     <div className="right__tab">
-
-        {categories.map((category: any, index: number) => (
-          <div key={index}>
-            <h3>{category.categoryName}</h3>
-            {category.templates.map((template: Template, idx: number) => (
-              <div key={idx}>
-                <Link reloadDocument
-                  to={`/${category.categoryTitle}/${template.templateTitle}`}
-                  onClick={() =>
-                    handleSubmitLink(
-                      category.categoryTitle,
-                      template.templateTitle
-                    )
-                  }
-                >
-                  {template.templateName}
-                </Link>
-              </div>
-            ))}
-          </div>
-        ))}
-
-
+      {categories.map((category: any, index: number) => (
+        <div key={index}>
+          <h3>{category.categoryName}</h3>
+          {category.templates.map((template: Template, idx: number) => (
+            <div key={idx}>
+              <Link
+                reloadDocument
+                to={`/${category.categoryTitle}/${template.templateTitle}`}
+                onClick={() =>
+                  handleSubmitLink(
+                    category.categoryTitle,
+                    template.templateTitle
+                  )
+                }
+              >
+                {template.templateName}
+              </Link>
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

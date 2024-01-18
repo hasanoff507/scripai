@@ -1,43 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Icon, Button } from "@blueprintjs/core";
 import ContainerFull from "../Components/Container";
 import { Link } from "react-router-dom";
 import GoogleIcon from "../Assets/img/googlrIcon.png";
+import Login from "../Components/Google/login";
+
+import Nav from "../Components/Nav";
+
 type Props = {};
 
 const Home: React.FC<Props> = ({}: Props) => {
+
+
+
   return (
     <div>
       <div className="scrip_header">
-        <ContainerFull>
-          <nav className="scrip__nav">
-            <div className="scrip__title-scrip">
-              <Icon iconSize={29} color="white" icon="clean" />
-              <h1>Scrip</h1>
-            </div>
-            <div className="scrip__title_right">
-              <h3>All Tools</h3>
-              <Button
-                style={{
-                  borderRadius: "20px",
-                  gap: "22px",
-                  paddingRight: "20px",
-                }}
-              >
-                {" "}
-                <div className="font" style={{display:'flex', alignItems:'center',gap:'20px'}}>
-                  <img
-                className="googleIcon"
-                    style={{ width: "24px", height: "23px" }}
-                    src={GoogleIcon}
-                    alt=""
-                  />
-                  Login with Google
-                </div>
-              </Button>
-            </div>
-          </nav>
-        </ContainerFull>
+        <Nav/>
       </div>
       <div className="homepage__section">
         <ContainerFull>
@@ -57,7 +36,7 @@ const Home: React.FC<Props> = ({}: Props) => {
                 borderRadius: "20px",
                 flexDirection: "row-reverse",
                 gap: "10px",
-                background: "#e11d48",
+                background: "#73c2fb",
                 color: "white",
                 boxShadow: "unset",
               }}

@@ -1,11 +1,26 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Icon, Button } from "@blueprintjs/core";
 import ContainerFull from "../Container";
 import GoogleIcon from "../../Assets/img/googlrIcon.png";
+import Login from "../Google/login";
+import { gapi } from "gapi-script";
 
 type Props = {};
+const clientId =
+  "954375066737-krhrae3rkpqu67iotu782jkn8bb0h1qv.apps.googleusercontent.com";
 
 const Nav: React.FC<Props> = ({}) => {
+
+  useEffect(()=>{
+    function start(){
+      gapi.client.init({
+        clientId: clientId,
+        scope: ""
+      })
+    }
+    gapi.load("client:auth2",start);
+    },[])
+
   return (
     <header className="scrip_header">
       <ContainerFull>
@@ -19,7 +34,7 @@ const Nav: React.FC<Props> = ({}) => {
           </div>
           <div className="scrip__title_right">
             <a style={{color:'#fff'}} href="/ai-tools">All Tools</a>
-            <Button
+            {/* <Button
               style={{
                 borderRadius: "20px",
                 gap: "22px",
@@ -39,7 +54,8 @@ const Nav: React.FC<Props> = ({}) => {
                 />
                 Login with Google
               </div>
-            </Button>
+            </Button> */}
+            <Login/>
           </div>
         </nav>
       </ContainerFull>

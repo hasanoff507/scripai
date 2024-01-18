@@ -11,7 +11,7 @@ const ContainerFull: React.FC<ContainerFullProps> = ({ children }) => {
     return (
         <React.Fragment>
             <CssBaseline />
-            <Container maxWidth="lg" style={{maxWidth:"unset"}}>
+            <Container maxWidth="lg" style={{maxWidth:"unset", paddingLeft:'20px !important', paddingRight:'20px !important'}}>
                 {children} {/* Render the children here */}
             </Container>
         </React.Fragment>

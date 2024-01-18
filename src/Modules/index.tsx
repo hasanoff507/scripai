@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./Assets/css/style.css";
 import Components from "./Components";
 import Home from "./Home";
-import AiTools from "./AiTools";
+import AiTools from "./Components/AiTools";
 import { Spinner } from "@blueprintjs/core";
 
 type Template = {

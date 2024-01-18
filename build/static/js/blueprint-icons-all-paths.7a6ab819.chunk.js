@@ -1,2 +1,0 @@
-(this["webpackJsonpmy-app"]=this["webpackJsonpmy-app"]||[]).push([[2],{205:function(n,t,r){"use strict";r.r(t),r.d(t,"getIconPaths",(function(){return u})),r.d(t,"iconNameToPathsRecordKey",(function(){return i}));var c=r(192),a=r(203);r.d(t,"IconSvgPaths16",(function(){return a}));var e=r(204);r.d(t,"IconSvgPaths20",(function(){return e}));var o=r(39);function u(n,t){var r=Object(c.a)(n);return t===o.a.STANDARD?a[r]:e[r]}function i(n){return Object(c.a)(n)}}}]);
-//# sourceMappingURL=blueprint-icons-all-paths.7a6ab819.chunk.js.map

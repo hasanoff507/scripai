@@ -151,7 +151,7 @@ const Components: React.FC<Props> = ({
               >
                 {saveData?.fields?.map((field, index) => (
                   <React.Fragment key={index}>
-                    <p>{field}</p>
+                    <p style={{textTransform:'capitalize'}}>{field}</p>
                     <Form.Item
                       name={field}
                       rules={[
@@ -164,7 +164,7 @@ const Components: React.FC<Props> = ({
                 ))}
                 <Form.Item>
                   <Button
-                    style={{ width: "100%" }}
+                    style={{ width: "100%" , color:'#fff',background:'#73c2fb'}}
                     type="primary"
                     htmlType="submit"
                   >

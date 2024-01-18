@@ -71,7 +71,7 @@ const CenterTab: React.FC<Props> = ({ loading, valuesPost }) => {
           onClick={refresh}
           style={{
             boxShadow: "unset",
-            backgroundColor: "#e11d48",
+            backgroundColor: "#73c2fb",
             padding: "11px 19px",
             borderRadius: "50%",
           }}
