@@ -22,7 +22,7 @@ const Home: React.FC<Props> = ({}: Props) => {
         <ContainerFull>
           <div className="homepage">
             <h1>
-              Save $60/m ScripAI is FREE <br /> write AI content{" "}
+              Save $60/m AI Text is FREE <br /> write AI content{" "}
             </h1>
             <span>Paragraph</span>
             <p>10X faster & free AI content tool!</p>

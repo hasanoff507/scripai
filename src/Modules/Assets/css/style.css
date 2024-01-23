@@ -301,7 +301,16 @@
 .table__component tr:hover {
   background-color: #f1f1f1;
 }
-
+.googleLogIn{
+border-radius: 12px !important;
+border: 0 !important;
+padding: none !important;
+}
+.googleLogIn div{
+  border-radius: 12px !important;
+  border: 0 !important;
+  padding: none !important;
+  }
 .aitools__display {
   display: flex;
   gap: 30px;

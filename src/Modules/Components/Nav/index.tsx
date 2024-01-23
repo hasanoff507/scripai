@@ -28,7 +28,7 @@ const Nav: React.FC<Props> = ({}) => {
           <div className="scrip__title-scrip">
             <Icon iconSize={29} color="white" icon="clean" />
             <a href="/">
-              <h1>Text Ai</h1>
+              <h1>AI Text</h1>
               
               </a>
           </div>

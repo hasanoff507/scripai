@@ -19,17 +19,36 @@ type Category = {
 
 const Modules: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState(true); // Initialize loading state
+  const [loading, setLoading] = useState(true);
   const [templates, setTemplates] = useState();
   const [templateTitle, setTemplateTitle] = useState();
   const [categoryTitle, setCategoryTitle] = useState();
+
+  // Default categories to use as a fallback
+  const defaultCategories: Category[] = [
+    {
+      categoryTitle: "Default Category 1",
+      categoryName: "default-category-1",
+      templates: [
+        { templateTitle: "Template 1", templateName: "template-1" },
+        // ... more templates
+      ],
+    },
+    // ... more default categories
+  ];
 
   useEffect(() => {
     fetch("http://localhost:8095/categories")
       .then((response) => response.json())
       .then((json) => {
         setCategories(json);
-        setLoading(false); // Set loading to false once categories are fetched
+      })
+      .catch((error) => {
+        console.error("Error fetching categories:", error);
+        setCategories(defaultCategories); // Use default categories in case of an error
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false in both cases
       });
   }, []);
 
@@ -41,15 +60,13 @@ const Modules: React.FC = () => {
     setLoading(false);
   }, []);
 
-  // Fetch templates data and save it to localStorage
   useEffect(() => {
     if (categoryTitle && templateTitle) {
-      // Ensure both values are set
       fetch(`http://localhost:8095/templates/${categoryTitle}/${templateTitle}`)
         .then((response) => response.json())
         .then((json) => {
           setTemplates(json);
-          localStorage.setItem("templateData", JSON.stringify(json)); // Save to local storage
+          localStorage.setItem("templateData", JSON.stringify(json));
         })
         .catch((error) => {
           console.error("Error fetching template data:", error);
@@ -58,12 +75,15 @@ const Modules: React.FC = () => {
     }
   }, [categoryTitle, templateTitle]);
 
-  // console.log(templates);
+  // Render logic
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <Router>
       <Routes>
-        {categories.map((item: any, index: number) => (
+        {categories.map((item: Category, index: number) => (
           <React.Fragment key={index}>
             <Route path="/" element={<Home />} />
             <Route
@@ -77,7 +97,7 @@ const Modules: React.FC = () => {
               }
             />
             <Route path={`${item.categoryTitle}`}>
-              {item.templates.map((template: any, idx: number) => (
+              {item.templates.map((template: Template, idx: number) => (
                 <Route key={idx}>
                   <Route
                     path={`${template.templateTitle}`}
