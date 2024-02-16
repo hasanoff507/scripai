@@ -41,6 +41,7 @@ type Props = {
   categories: Category[];
   setTemplateTitle: any;
   setCategoryTitle: any;
+  handleSubmitLink: (categoryTitle: any, templateTitle: any) => void
 };
 
 const Components: React.FC<Props> = ({
@@ -50,6 +51,7 @@ const Components: React.FC<Props> = ({
   categories,
   setTemplateTitle,
   setCategoryTitle,
+  handleSubmitLink
 }: Props) => {
   //State for POST and GET
 
@@ -89,7 +91,6 @@ const Components: React.FC<Props> = ({
   }, [saveData]);
 
   // Render LcoalStorage
-
   useEffect(() => {
     setSaveData(templates);
   }, [templates]);
@@ -99,14 +100,11 @@ const Components: React.FC<Props> = ({
   const onFinish = (values: FieldType) => {
     const localCategoryTitle = localStorage.getItem("categoryTitle");
     const localTemplateTitle = localStorage.getItem("templateTitle");
-
     if (!localCategoryTitle || !localTemplateTitle) {
       console.error("Category title or template title is missing");
-      return; // Exit the function if titles are missing
+      return; 
     }
-
-    setLoading(true); // Set loading to true when the request starts
-
+    setLoading(true); 
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -120,11 +118,11 @@ const Components: React.FC<Props> = ({
       .then((response) => response.json())
       .then((data) => {
         setValuesPost(data);
-        setLoading(false); // Set loading to false when the request is complete
+        setLoading(false); 
       })
       .catch((error) => {
         console.error("Fetch error:", error);
-        setLoading(false); // Set loading to false also in case of error
+        setLoading(false); 
       });
   };
 
@@ -185,6 +183,7 @@ const Components: React.FC<Props> = ({
             categories={categories}
             setTemplateTitle={setTemplateTitle}
             setCategoryTitle={setCategoryTitle}
+            handleSubmitLink={handleSubmitLink}
           />
         </div>
       </ContainerFull>

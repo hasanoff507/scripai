@@ -23,6 +23,9 @@ const Modules: React.FC = () => {
   const [templates, setTemplates] = useState();
   const [templateTitle, setTemplateTitle] = useState();
   const [categoryTitle, setCategoryTitle] = useState();
+  console.log(templates);
+  console.log(templateTitle);
+  console.log(categoryTitle);
 
   // Default categories to use as a fallback
   const defaultCategories: Category[] = [
@@ -62,9 +65,12 @@ const Modules: React.FC = () => {
 
   useEffect(() => {
     if (categoryTitle && templateTitle) {
-      fetch(`https://finpalbackend.pythonanywhere.com/templates/${categoryTitle}/${templateTitle}`)
+      fetch(
+        `https://finpalbackend.pythonanywhere.com/templates/${categoryTitle}/${templateTitle}`
+      )
         .then((response) => response.json())
         .then((json) => {
+          console.log(json);
           setTemplates(json);
           localStorage.setItem("templateData", JSON.stringify(json));
         })
@@ -75,6 +81,10 @@ const Modules: React.FC = () => {
     }
   }, [categoryTitle, templateTitle]);
 
+  const handleSubmitLink = (categoryTitle: any, templateTitle: any) => {
+    setCategoryTitle(categoryTitle);
+    setTemplateTitle(templateTitle);
+  };
   // Render logic
   if (loading) {
     return <Spinner />;
@@ -109,6 +119,7 @@ const Modules: React.FC = () => {
                         templates={templates}
                         templateTitle={templateTitle}
                         categoryTitle={categoryTitle}
+                        handleSubmitLink={handleSubmitLink}
                       />
                     }
                   />

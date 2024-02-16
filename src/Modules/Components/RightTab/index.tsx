@@ -18,18 +18,17 @@ type Props = {
   categories: Category[];
   setTemplateTitle: any;
   setCategoryTitle: any;
+  handleSubmitLink: (categoryTitle: any, templateTitle: any) => void
 };
 
 const RightTab: React.FC<Props> = ({
   categories,
   setTemplateTitle,
   setCategoryTitle,
+  handleSubmitLink
 }: Props) => {
-  const handleSubmitLink = (categoryTitle: any, templateTitle: any) => {
-    setCategoryTitle(categoryTitle);
-    setTemplateTitle(templateTitle);
-    window.location.reload();
-  };
+ 
+
 
   return (
     <div className="right__tab">
