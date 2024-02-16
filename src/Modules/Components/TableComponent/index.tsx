@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 type Props = {
   valuesPost: any; // Consider defining a more specific type if possible
 };

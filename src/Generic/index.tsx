@@ -8,7 +8,7 @@ const Generic = () => {
     ]);
 
     useEffect(() => {
-        fetch('http://localhost:8095/categories')
+        fetch('https://finpalbackend.pythonanywhere.com/categories')
             .then(response => response.json())
             .then(json => setCategories(json));
     }, []);

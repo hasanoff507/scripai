@@ -1,5 +1,8 @@
-import React, { useEffect } from "react";
+//Import Component
+import React from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
+
+// Type
 type Template = {
   templateTitle: string;
   templateName: string;

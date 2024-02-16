@@ -1,3 +1,4 @@
+//Import Components
 import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import CenterTab from "./CenterTab";
@@ -6,8 +7,7 @@ import ContainerFull from "./Container";
 import Footer from "./Footer";
 import { Button, Form, Input } from "antd";
 
-
-
+//Import Type
 type FieldType = {
   url: string;
   company_name: string;
@@ -22,6 +22,7 @@ type TemplatesType = {
   name: string;
   fields: string[];
 };
+
 type Template = {
   templateTitle: string;
   templateName: string;
@@ -113,7 +114,7 @@ const Components: React.FC<Props> = ({
     };
 
     fetch(
-      `http://localhost:8095/generate/${localCategoryTitle}/${localTemplateTitle}`,
+      `https://finpalbackend.pythonanywhere.com/generate/${localCategoryTitle}/${localTemplateTitle}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -128,7 +129,6 @@ const Components: React.FC<Props> = ({
   };
 
   //Feiled Post Request
-
   const onFinishFailed = (errorInfo: any) => {
     console.log(errorInfo, "error");
   };
@@ -153,7 +153,7 @@ const Components: React.FC<Props> = ({
               >
                 {saveData?.fields?.map((field, index) => (
                   <React.Fragment key={index}>
-                    <p style={{textTransform:'capitalize'}}>{field}</p>
+                    <p style={{ textTransform: "capitalize" }}>{field}</p>
                     <Form.Item
                       name={field}
                       rules={[
@@ -166,7 +166,11 @@ const Components: React.FC<Props> = ({
                 ))}
                 <Form.Item>
                   <Button
-                    style={{ width: "100%" , color:'#fff',background:'#73c2fb'}}
+                    style={{
+                      width: "100%",
+                      color: "#fff",
+                      background: "#73c2fb",
+                    }}
                     type="primary"
                     htmlType="submit"
                   >

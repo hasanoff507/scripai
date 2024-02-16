@@ -38,7 +38,7 @@ const Modules: React.FC = () => {
   ];
 
   useEffect(() => {
-    fetch("http://localhost:8095/categories")
+    fetch("https://finpalbackend.pythonanywhere.com/categories")
       .then((response) => response.json())
       .then((json) => {
         setCategories(json);
@@ -62,7 +62,7 @@ const Modules: React.FC = () => {
 
   useEffect(() => {
     if (categoryTitle && templateTitle) {
-      fetch(`http://localhost:8095/templates/${categoryTitle}/${templateTitle}`)
+      fetch(`https://finpalbackend.pythonanywhere.com/templates/${categoryTitle}/${templateTitle}`)
         .then((response) => response.json())
         .then((json) => {
           setTemplates(json);
