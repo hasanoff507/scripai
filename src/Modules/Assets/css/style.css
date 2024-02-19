@@ -98,9 +98,11 @@
   border-radius: 15px;
 }
 .card__option__item {
-  display: flex;
+  /* display: flex; */
   gap: 20px;
   justify-content: center;
+  padding-left: 112px;
+  padding-right: 70px;
 }
 @media screen and (max-width: 1280px) {
   .center__tab {
@@ -314,7 +316,8 @@ padding: none !important;
 .aitools__display {
   display: flex;
   gap: 30px;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
 }
 @media screen and (max-width: 1700px) {
   .ant-card {

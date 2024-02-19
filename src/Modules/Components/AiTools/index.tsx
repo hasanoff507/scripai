@@ -74,6 +74,7 @@ const AiTools: React.FC<Props> = ({
                           background: "#f0fdf3",
                           border: "1px solid #4ade80",
                           maxWidth: "100%",
+                          height:'180px'
                         }}
                       >
                         <p>{category.categoryTitle}</p>
