@@ -95,7 +95,8 @@ const Modules: React.FC = () => {
   }
 
   return (
-    <Router>
+
+        <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -129,8 +130,11 @@ const Modules: React.FC = () => {
             ))}
           </Route>
         ))}
+          
       </Routes>
     </Router>
+
+
   );
 };
 
