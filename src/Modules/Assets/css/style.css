@@ -229,7 +229,6 @@
   font-family: "Noto Sans JP", sans-serif;
 }
 .about {
-  margin-top: 40px;
   text-align: center;
 }
 .about span {
@@ -416,8 +415,13 @@ padding: none !important;
   }
   .card__option__item {
     flex-direction: column;
+    padding-left: unset;
+    padding-right: unset;
   }
   .right__tab {
     height: 100%;
+  }
+  .widt__media{
+    width: 100%;
   }
 }

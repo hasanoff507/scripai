@@ -14,7 +14,6 @@ const Footer: React.FC<Props> = ({}: Props) => {
           alignItems: "center",
           justifyContent: "center",
           gap: "20px",
-          marginTop: "15px",
         }}
       >
 

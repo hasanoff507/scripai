@@ -48,11 +48,11 @@ const AiTools: React.FC<Props> = ({
       <ContainerFull>
         <div className="card__option__item">
           {categories.map((category: any, index: number) => (
-            <div key={index}>
+            <div className="widt__media" key={index}>
               <h3>{category.categoryName}</h3>
               <div className="aitools__display">
                 {category.templates.map((template: Template, idx: number) => (
-                  <div key={idx}>
+                  <div className="widt__media" key={idx}>
                     <Link
                       to={`/${category.categoryTitle}/${template.templateTitle}`}
                       onClick={() =>
