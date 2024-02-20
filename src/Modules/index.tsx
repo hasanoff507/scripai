@@ -65,14 +65,28 @@ const Modules: React.FC = () => {
       )
         .then((response) => response.json())
         .then((json) => {
-          setTemplates(json);
-          localStorage.setItem("templateData", JSON.stringify(json));
+          const companyNameField = json.fields?.find(
+            (field: string) => field === "Company Name"
+          );
+
+          const uniqueFields = json.fields?.filter(
+            (value: any, index: any, self: string | any[]) =>
+              self.indexOf(value) === index
+          );
+
+          const updatedJson = { ...json, fields: uniqueFields };
+
+          setTemplates(updatedJson);
+          localStorage.setItem("templateData", JSON.stringify(updatedJson));
         })
-        .catch((error) => console.error("Error fetching template data:", error))
-        .finally(() => setLoading(false));
+        .catch((error) => {
+          console.error("Error fetching template data:", error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   }, [categoryTitle, templateTitle]);
-
   const handleSubmitLink = (categoryTitle: string, templateTitle: string) => {
     setCategoryTitle(categoryTitle);
     setTemplateTitle(templateTitle);

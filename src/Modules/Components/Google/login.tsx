@@ -32,6 +32,7 @@ const LoginLogoutComponent = () => {
           style={{ display: "flex", alignItems: "center", gap: "15px" }}
         >
           <GoogleLogout
+          disabled
             clientId={clientId}
             buttonText="Logout"
             onLogoutSuccess={onLogoutSuccess}
@@ -48,6 +49,7 @@ const LoginLogoutComponent = () => {
           style={{ display: "flex", alignItems: "center", gap: "15px" }}
         >
           <GoogleLogin
+          disabled
             clientId={clientId}
             buttonText="Login"
             onSuccess={onSuccessLogin}

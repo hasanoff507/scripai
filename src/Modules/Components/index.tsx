@@ -117,6 +117,7 @@ const Components: React.FC<Props> = ({
     )
       .then((response) => response.json())
       .then((data) => {
+        
         setValuesPost(data);
         setLoading(false); 
       })
